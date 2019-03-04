@@ -3,10 +3,12 @@ package com.divashchenko;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class Ball extends Figure {
 
-    protected Ball(GraphicsContext gc, double x, double y) {
-        super(gc, x, y);
+    protected Ball(GraphicsContext gc, double x, double y, List<Shape> shapes) {
+        super(gc, x, y, shapes);
     }
 
     @Override

@@ -13,9 +13,10 @@ public class Board {
 
     public Board(GraphicsContext gc) {
         this.gc = gc;
-        shapes.add(new Ball(gc, 10, 20));
-        shapes.add(new Square(gc, 25, 300));
-        shapes.add(new Home(gc, 50, 50));
+        shapes.add(new Ball(gc, 10, 20, shapes));
+        shapes.add(new Square(gc, 25, 300, shapes));
+        shapes.add(new Home(gc, 50, 50, shapes));
+        shapes.add(new Home(gc, 70, 240, shapes));
     }
 
     public void move() {

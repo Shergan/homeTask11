@@ -2,23 +2,26 @@ package com.divashchenko;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.List;
 import java.util.Random;
 
 public abstract class Figure implements Shape {
 
-    protected static double diameter;
+    protected double diameter;
 
     protected GraphicsContext gc;
     protected double x;
     protected double y;
+    protected List<Shape> shapes;
 
     private double xSpeed;
     private double ySpeed;
 
-    protected Figure(GraphicsContext gc, double x, double y) {
+    protected Figure(GraphicsContext gc, double x, double y, List<Shape> shapes) {
         this.gc = gc;
         this.x = x;
         this.y = y;
+        this.shapes = shapes;
 
         Random random = new Random();
         xSpeed = 2 + random.nextInt(5);
@@ -46,6 +49,30 @@ public abstract class Figure implements Shape {
             ySpeed = -ySpeed;
         }
 
+        checkDistance();
+    }
+
+    private void checkDistance() {
+        for (int i = 0; i < shapes.size(); i++) {
+            Figure figure = (Figure) shapes.get(i);
+            //if (this.equals(figure)) {
+            //    continue;
+            //}
+
+            double x1 = x + diameter / 2;
+            double y1 = y + diameter / 2;
+            double x2 = figure.x + figure.diameter / 2;
+            double y2 = figure.y + figure.diameter / 2;
+
+            double distanceBetweenFigures = Math.sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+
+            if (distanceBetweenFigures < ((diameter + figure.diameter) / 2)) {
+                xSpeed = -xSpeed;
+                ySpeed = -ySpeed;
+                figure.xSpeed = -figure.xSpeed;
+                figure.ySpeed = -figure.ySpeed;
+            }
+        }
     }
 
     @Override

@@ -3,9 +3,12 @@ package com.divashchenko;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class Home extends Figure {
-    public Home(GraphicsContext gc, double x, double y) {
-        super(gc, x, y);
+
+    protected Home(GraphicsContext gc, double x, double y, List<Shape> shapes) {
+        super(gc, x, y, shapes);
     }
 
     @Override
