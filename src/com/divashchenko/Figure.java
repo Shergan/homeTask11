@@ -55,9 +55,6 @@ public abstract class Figure implements Shape {
     private void checkDistance() {
         for (int i = 0; i < shapes.size(); i++) {
             Figure figure = (Figure) shapes.get(i);
-            //if (this.equals(figure)) {
-            //    continue;
-            //}
 
             double x1 = x + diameter / 2;
             double y1 = y + diameter / 2;
